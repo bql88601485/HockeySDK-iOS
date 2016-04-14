@@ -122,14 +122,14 @@
   [given([mockBundle objectForInfoDictionaryKey:@"CFBundleIconFile"]) willReturn:nil];
 
   resultString = bit_validAppIconFilename(mockBundle, resourceBundle);
-  assertThat(resultString, notNilValue());
+  assertThat(resultString, equalTo(validIconPath2x));
   
   // CFBundleIcons contains valid dictionary filenames
   [given([mockBundle objectForInfoDictionaryKey:@"CFBundleIconFiles"]) willReturn:@[@"invalidFilename.png"]];
   [given([mockBundle objectForInfoDictionaryKey:@"CFBundleIcons"]) willReturn:@{@"CFBundlePrimaryIcon":@{@"CFBundleIconFiles":@[validIconPath, validIconPath2x]}}];
   [given([mockBundle objectForInfoDictionaryKey:@"CFBundleIcons~ipad"]) willReturn:nil];
   [given([mockBundle objectForInfoDictionaryKey:@"CFBundleIconFile"]) willReturn:nil];
-
+  
   // CFBundleIcons contains valid ipad dictionary and valid default dictionary filenames
   [given([mockBundle objectForInfoDictionaryKey:@"CFBundleIconFiles"]) willReturn:@[@"invalidFilename.png"]];
   [given([mockBundle objectForInfoDictionaryKey:@"CFBundleIcons"]) willReturn:@{@"CFBundlePrimaryIcon":@{@"CFBundleIconFiles":@[validIconPath, validIconPath2x]}}];
@@ -137,7 +137,7 @@
   [given([mockBundle objectForInfoDictionaryKey:@"CFBundleIconFile"]) willReturn:nil];
 
   resultString = bit_validAppIconFilename(mockBundle, resourceBundle);
-  assertThat(resultString, notNilValue());
+  assertThat(resultString, equalTo(validIconPath2x));
 
   // CFBundleIcons contains valid filenames
   [given([mockBundle objectForInfoDictionaryKey:@"CFBundleIconFiles"]) willReturn:@[@"invalidFilename.png"]];
@@ -146,7 +146,7 @@
   [given([mockBundle objectForInfoDictionaryKey:@"CFBundleIconFile"]) willReturn:nil];
 
   resultString = bit_validAppIconFilename(mockBundle, resourceBundle);
-  assertThat(resultString, notNilValue());
+  assertThat(resultString, equalTo(validIconPath2x));
 
   // CFBundleIcon contains valid filename
   [given([mockBundle objectForInfoDictionaryKey:@"CFBundleIconFiles"]) willReturn:@[@"invalidFilename.png"]];
@@ -155,7 +155,7 @@
   [given([mockBundle objectForInfoDictionaryKey:@"CFBundleIconFile"]) willReturn:validIconPath];
   
   resultString = bit_validAppIconFilename(mockBundle, resourceBundle);
-  assertThat(resultString, notNilValue());
+  assertThat(resultString, equalTo(validIconPath2x));
 }
 
 - (void)testDevicePlattform {
