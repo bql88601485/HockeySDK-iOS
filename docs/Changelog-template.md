@@ -1,5 +1,6 @@
 - [NEW] Added `preparedItemsForFeedbackManager:` method in `BITFeedbackManagerDelegate` to allow to provide items with every possible method of showing the feedback compose dialog.
 - [UPDATE] Deprecate `feedbackComposerPreparedItems` property in favor of the new delegate method.
+- [BUGFIX] Fix app icons with unusual filenames not showing in the in-app update prompt
 
 ## Version 4.0.0-beta.1
 
